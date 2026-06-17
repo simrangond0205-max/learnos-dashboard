@@ -6,6 +6,10 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface HealthStatus {
-  status: string;
+export interface Course {
+  id: string;
+  title: string;
+  progress: number;
+  icon_name: string;
+  created_at: string;
 }
