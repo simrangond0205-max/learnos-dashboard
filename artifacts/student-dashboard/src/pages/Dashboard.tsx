@@ -49,9 +49,11 @@ export default function Dashboard() {
           <BentoGrid className="grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
             <BentoItem className="col-span-1 md:col-span-2 xl:col-span-2">
               {summary && (
-                <HeroTile 
-                  name={summary.student_name} 
-                  streakDays={summary.streak_days} 
+                <HeroTile
+                  name={summary.student_name}
+                  streakDays={summary.streak_days}
+                  totalCourses={summary.total_courses}
+                  avgProgress={summary.avg_progress}
                 />
               )}
             </BentoItem>

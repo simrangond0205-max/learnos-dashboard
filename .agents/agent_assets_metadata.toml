@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "o903SrseHVGt1pVwLIKrI"
+uri = "file://artifacts/student-dashboard/src/assets/course-react.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "OgwbjjBA2rCqdfEFo8ZdM"
+uri = "file://artifacts/student-dashboard/src/assets/course-typescript.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "q3MA3OZgJNIN2jKBiaOct"
+uri = "file://artifacts/student-dashboard/src/assets/course-system-design.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "etlf8veHJiL4O8dDQGAJt"
+uri = "file://artifacts/student-dashboard/src/assets/course-ml.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "KfhTmpX4kqt-f2nVRM9iq"
+uri = "file://artifacts/student-dashboard/src/assets/avatar.png"
+type = "image"
+title = "generated_image"

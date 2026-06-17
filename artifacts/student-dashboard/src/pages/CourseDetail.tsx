@@ -9,6 +9,18 @@ import { ArrowLeft, CheckCircle2, Circle, Lock } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { getGetCourseQueryKey, getListCoursesQueryKey } from "@workspace/api-client-react";
 
+import courseReact from "@/assets/course-react.png";
+import courseTypescript from "@/assets/course-typescript.png";
+import courseSystemDesign from "@/assets/course-system-design.png";
+import courseMl from "@/assets/course-ml.png";
+
+const COURSE_IMAGES: Record<string, string> = {
+  code: courseReact,
+  layers: courseTypescript,
+  cpu: courseSystemDesign,
+  brain: courseMl,
+};
+
 const LESSON_TEMPLATES: Record<string, string[]> = {
   code: [
     "Component Architecture Patterns",
@@ -179,21 +191,29 @@ export default function CourseDetail() {
           >
             {/* Hero card */}
             <motion.section
-              className="relative overflow-hidden rounded-3xl border border-card-border bg-card p-8"
+              className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#0d0d18]"
               variants={itemVariants}
             >
-              <div
-                className="absolute inset-0 opacity-15 pointer-events-none"
-                style={{ backgroundImage: "radial-gradient(circle at 0% 0%, hsl(var(--primary)) 0%, transparent 60%)" }}
-              />
+              {/* Banner image */}
+              {COURSE_IMAGES[course.icon_name] && (
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={COURSE_IMAGES[course.icon_name]}
+                    alt={course.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d18] via-[#0d0d18]/40 to-transparent" />
+                </div>
+              )}
 
-              <div className="relative z-10 flex items-start gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(99,102,241,0.15)]">
-                  <Icon className="w-7 h-7 text-primary" />
+              <div className="p-7">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h1 className="text-2xl font-bold tracking-tight mb-1">{course.title}</h1>
-                  <p className="text-sm text-muted-foreground">
+                  <h1 className="text-2xl font-bold tracking-tight mb-1 text-white">{course.title}</h1>
+                  <p className="text-sm text-white/40">
                     {localCompleted} of {lessons.length} lessons complete
                   </p>
 
@@ -212,6 +232,7 @@ export default function CourseDetail() {
                     </span>
                   </div>
                 </div>
+              </div>
               </div>
             </motion.section>
 
