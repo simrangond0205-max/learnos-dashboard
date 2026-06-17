@@ -1,0 +1,5 @@
+{
+  "buildCommand": "pnpm install && pnpm run typecheck && pnpm -r --if-present run build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "artifacts/api-server/dist"
+}
