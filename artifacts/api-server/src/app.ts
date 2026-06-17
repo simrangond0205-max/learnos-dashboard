@@ -1,31 +1,24 @@
-import express, { type Express, type Request, type Response } from "express";
+import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
-import * as pinoHttpModule from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
-const pinoHttp = pinoHttpModule.default || pinoHttpModule;
 const app: Express = express();
 
-app.use(
-  pinoHttp({
-    logger,
-    serializers: {
-      req(req: Request) {
-        return {
-          id: (req as any).id,
-          method: req.method,
-          url: req.url?.split("?")[0],
-        };
-      },
-      res(res: Response) {
-        return {
-          statusCode: res.statusCode,
-        };
-      },
-    },
-  }),
-);
+// Simple logging middleware
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const start = Date.now();
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    logger.info({
+      method: req.method,
+      url: req.url?.split("?")[0],
+      statusCode: res.statusCode,
+      duration,
+    });
+  });
+  next();
+});
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
